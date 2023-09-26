@@ -29,6 +29,23 @@ public class Evaluator {
         data[second] = temporary;
     }
 
+    public static void insertionSort(int[] data) {
+        // Loop over data.length-1 elements
+        for(int next = 1; next < data.length; next++) {
+            int insert = data[next]; //value to insert
+            int moveItem = next;
+
+            while(moveItem > 0 && data[moveItem-1] > insert) {
+                //shift elements right one slot
+                data[moveItem] = data[moveItem-1];
+                moveItem--;
+            }
+
+            data[moveItem] = insert;
+        }
+
+    }
+
     public static void main(String[] arg) {
         SecureRandom generator = new SecureRandom();
 
@@ -36,7 +53,8 @@ public class Evaluator {
         int[] data = generator.ints(10,10,91).toArray();
 
         System.out.printf("Unsorted array: %s%n%n", Arrays.toString(data));
-        selectionSort(data);
+//        selectionSort(data);
+        insertionSort(data);
         System.out.printf("Sorted array: %s%n%n", Arrays.toString(data));
 
     }
